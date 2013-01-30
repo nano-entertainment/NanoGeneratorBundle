@@ -16,16 +16,6 @@ use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator as SensioDoctr
 class DoctrineCrudGenerator extends SensioDoctrineCrudGenerator
 {
   
-    protected $filesystem;
-    protected $skeletonDir;
-    protected $routePrefix;
-    protected $routeNamePrefix;
-    protected $bundle;
-    protected $entity;
-    protected $metadata;
-    protected $format;
-    protected $actions;
-    protected $completeRoute;
 
     /**
      * Generate the CRUD controller.
