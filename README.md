@@ -20,7 +20,6 @@ Add NanoGeneratorBundle to composer.json
 ```js
 {
     ...
-
     "repositories": [
         {
             "type": "vcs",
@@ -52,8 +51,7 @@ Enable the bundle in the kernel:
 public function registerBundles()
 {
     if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            ...
-            
+            ...     
             $bundles[] = new Nano\Bundle\GeneratorBundle\NanoGeneratorBundle();
         }
 }
