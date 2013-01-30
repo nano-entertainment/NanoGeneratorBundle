@@ -2,16 +2,18 @@
 
 namespace Nano\Bundle\GeneratorBundle\Generator;
 
-use Sensio\Bundle\GeneratorBundle\Generator\Generator;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use Doctrine\ORM\Mapping\ClassMetadataInfo;
+
+use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator as SensioDoctrineCrudGenerator;
+//use Sensio\Bundle\GeneratorBundle\Generator\Generator;
+//use Symfony\Component\Filesystem\Filesystem;
+//use Symfony\Component\HttpKernel\Bundle\BundleInterface;
+//use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
 /**
  * Generates a CRUD controller.
  *
  */
-class DoctrineCrudGenerator extends Generator
+class DoctrineCrudGenerator extends SensioDoctrineCrudGenerator
 {
   
     protected $filesystem;
@@ -24,18 +26,6 @@ class DoctrineCrudGenerator extends Generator
     protected $format;
     protected $actions;
     protected $completeRoute;
-
-    /**
-     * Constructor.
-     *
-     * @param Filesystem $filesystem  A Filesystem instance
-     * @param string     $skeletonDir Path to the skeleton directory
-     */
-    public function __construct(Filesystem $filesystem, $skeletonDir)
-    {
-        $this->filesystem  = $filesystem;
-        $this->skeletonDir = $skeletonDir;
-    }
 
     /**
      * Generate the CRUD controller.
@@ -100,51 +90,6 @@ class DoctrineCrudGenerator extends Generator
         $this->generateTestClass();
         $this->generateConfiguration();
     }
-    /**
-     * Sets the configuration format.
-     *
-     * @param string $format The configuration format
-     */
-    private function setFormat($format)
-    {
-        switch ($format) {
-            case 'yml':
-            case 'xml':
-            case 'php':
-            case 'annotation':
-                $this->format = $format;
-                break;
-            default:
-                $this->format = 'yml';
-                break;
-        }
-    }
-
-    /**
-     * Generates the routing configuration.
-     *
-     */
-    private function generateConfiguration()
-    {
-        if (!in_array($this->format, array('yml', 'xml', 'php'))) {
-            return;
-        }
-
-        $target = sprintf(
-            '%s/Resources/config/routing/%s.%s',
-            $this->bundle->getPath(),
-            strtolower(str_replace('\\', '_', $this->entity)),
-            $this->format
-        );
-
-        $this->renderFile($this->skeletonDir, 'config/routing.'.$this->format, $target, array(
-            'actions'           => $this->actions,
-            'route_prefix'      => $this->routePrefix,
-            'route_name_prefix' => $this->routeNamePrefix,
-            'bundle'            => $this->bundle->getName(),
-            'entity'            => $this->entity,
-        ));
-    }
 
     /**
      * Generates the controller class only.
@@ -187,31 +132,6 @@ class DoctrineCrudGenerator extends Generator
         ));
     }
 
-    /**
-     * Generates the functional test class only.
-     *
-     */
-    private function generateTestClass()
-    {
-        $parts = explode('\\', $this->entity);
-        $entityClass = array_pop($parts);
-        $entityNamespace = implode('\\', $parts);
-
-        $dir    = $this->bundle->getPath() .'/Tests/Controller';
-        $target = $dir .'/'. str_replace('\\', '/', $entityNamespace).'/'. $entityClass .'ControllerTest.php';
-
-        $this->renderFile($this->skeletonDir, 'tests/test.php', $target, array(
-            'route_prefix'      => $this->routePrefix,
-            'route_name_prefix' => $this->routeNamePrefix,
-            'entity'            => $this->entity,
-            'entity_class'      => $entityClass,
-            'namespace'         => $this->bundle->getNamespace(),
-            'entity_namespace'  => $entityNamespace,
-            'actions'           => $this->actions,
-            'form_type_name'    => strtolower(str_replace('\\', '_', $this->bundle->getNamespace()).($parts ? '_' : '').implode('_', $parts).'_'.$entityClass.'Type'),
-            'dir'               => $this->skeletonDir,
-        ));
-    }
 
     /**
      * Generates the index.html.twig template in the final bundle.
@@ -288,16 +208,5 @@ class DoctrineCrudGenerator extends Generator
         ));
     }
 
-    /**
-     * Returns an array of record actions to generate (edit, show).
-     *
-     * @return array
-     */
-    private function getRecordActions()
-    {
-        return array_filter($this->actions, function($item) {
-            return in_array($item, array('show', 'edit'));
-        });
-    }
 
 }
