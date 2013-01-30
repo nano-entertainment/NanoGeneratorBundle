@@ -2,15 +2,15 @@
 
 namespace Nano\Bundle\GeneratorBundle\Command;
  
-use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand as SensioGenerateDoctrineCommand;
+use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand as SensioGenerateDoctrineCrudCommand;
 use Nano\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
 
 /**
- * Description of GenerateDoctrineCrudCommand
+ * Generates bundles
  *
  * @author Lasse Nielsen <lasse.nielsen@nano-entertainment.de>
  */
-class GenerateDoctrineCrudCommand extends SensioGenerateDoctrineCommand {
+class GenerateDoctrineCrudCommand extends SensioGenerateDoctrineCrudCommand {
   
   protected $generator;
  
