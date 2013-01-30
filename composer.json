@@ -1,5 +1,5 @@
 {
-  "name":         "nano-entertainment/nano-generator-bundle",
+  "name":         "nano-entertainment/generator-bundle",
   "type":         "symfony-bundle",
   "description":  "This bundle generates code based on SensioGeneratorBundle",
   "homepage":     "http://nano-entertainment.de",
