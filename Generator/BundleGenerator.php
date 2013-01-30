@@ -12,7 +12,6 @@ use Symfony\Component\DependencyInjection\Container;
 /**
  * Generates a bundle.
  *
- * @author Lasse Nielsen <lasse.nielsen@nano-entertainment.de>
  */
 class BundleGenerator extends Generator
 {
