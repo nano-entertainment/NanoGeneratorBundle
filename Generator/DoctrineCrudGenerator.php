@@ -12,6 +12,7 @@ use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator as SensioDoctr
 /**
  * Generates a CRUD controller.
  *
+ * @author Lasse Nielsen <lasse.nielsen@nano-entertainment.de>
  */
 class DoctrineCrudGenerator extends SensioDoctrineCrudGenerator
 {
