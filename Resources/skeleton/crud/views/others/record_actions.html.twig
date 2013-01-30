@@ -1,0 +1,22 @@
+<ul class="record_actions">
+    <li>
+      <a class="btn" href="{{ "{{ path('"~ complete_route ~"_index') }}" }}">
+        <i class="glyphicons-icon left_arrow"></i> Back to the list
+        </a>
+    </li>
+{% if ('edit' in actions) and (not hide_edit) %}
+    <li>
+      <a class="btn" href="{{ "{{ path('"~ complete_route ~"_edit', { 'id': entity.id }) }}" }}">
+        <i class="glyphicons-icon edit"></i> Edit
+        </a>
+    </li>
+{% endif %}
+{% if ('delete' in actions) and (not hide_delete) %}
+    <li>
+        <form action="{{ "{{ path('"~ complete_route ~"_delete', { 'id': entity.id }) }}" }}" method="post">
+            {{ '{{ form_widget(delete_form) }}' }}
+            <button class="btn" type="submit"><i class="glyphicons-icon remove"></i> Delete</button>
+        </form>
+    </li>
+{% endif %}
+</ul>

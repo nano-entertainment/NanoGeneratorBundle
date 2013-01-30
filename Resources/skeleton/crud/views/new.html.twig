@@ -1,0 +1,15 @@
+{{ "{% extends '"~ bundle ~"::layout.html.twig'" }}
+{{ "{% block content %}" }}
+<h1>{{ entity }} creation</h1>
+
+<form action="{{ "{{ path('"~ complete_route ~"_create') }}" }}" method="post" {{ "{{ form_enctype(form) }}" }}>
+    {{ "{{ form_widget(form) }}" }}
+    <p>
+      <button class="btn" type="submit">Create</button>
+    </p>
+</form>
+
+{% set hide_edit, hide_delete = true, true %}
+{% include 'views/others/record_actions.html.twig' %}
+
+{{ "{% endblock content %}" }}
