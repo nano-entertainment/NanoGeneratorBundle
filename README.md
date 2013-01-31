@@ -19,15 +19,13 @@ Add NanoGeneratorBundle to composer.json
 
 ```js
 {
-    ...
     "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/nano-entertainment/NanoGeneratorBundle"
         }
     ],
-    "require": {
-        ...
+    "require-dev": {
         "nano-entertainment/generator-bundle": "dev-master"
     }
 }
@@ -38,7 +36,7 @@ Add NanoGeneratorBundle to composer.json
 Now tell composer to download the bundle by running the command:
 
 ``` bash
-$ php composer.phar update nano-entertainment/generator-bundle
+$ php composer.phar update --dev
 ```
 
 
@@ -52,6 +50,7 @@ public function registerBundles()
 {
     if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             ...     
+            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new Nano\Bundle\GeneratorBundle\NanoGeneratorBundle();
         }
 }
