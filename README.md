@@ -35,14 +35,14 @@ Add NanoGeneratorBundle to composer.json
 
 Now tell composer to download the bundle by running the command:
 
-``` bash
+```bash
 $ php composer.phar update --dev
 ```
 
 
 Enable the bundle in the kernel:
 
-``` php
+```php
 <?php
 // app/AppKernel.php
 
