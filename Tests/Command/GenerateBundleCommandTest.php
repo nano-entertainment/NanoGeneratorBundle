@@ -49,7 +49,7 @@ class GenerateBundleCommandTest extends SensioGenerateBundleCommandTest
         return $this
             ->getMockBuilder('Nano\Bundle\GeneratorBundle\Generator\BundleGenerator')
             ->disableOriginalConstructor()
-            ->setMethods(array('generate'))
+            ->setMethods(array('nano:generate'))
             ->getMock()
         ;
     }
