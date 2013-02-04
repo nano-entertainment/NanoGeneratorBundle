@@ -5,6 +5,8 @@ namespace Nano\Bundle\GeneratorBundle\Generator;
 
 use Sensio\Bundle\GeneratorBundle\Generator\BundleGenerator as SensioBundleGenerator;
 
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\DependencyInjection\Container;
 
 
 /**
@@ -13,7 +15,14 @@ use Sensio\Bundle\GeneratorBundle\Generator\BundleGenerator as SensioBundleGener
  */
 class BundleGenerator extends SensioBundleGenerator
 {
+    private $filesystem;
+    private $skeletonDir;
 
+    public function __construct(Filesystem $filesystem, $skeletonDir)
+    {
+        $this->filesystem = $filesystem;
+        $this->skeletonDir = $skeletonDir;
+    }
 
     public function generate($namespace, $bundle, $dir, $format, $structure)
     {
