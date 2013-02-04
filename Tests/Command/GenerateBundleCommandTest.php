@@ -5,7 +5,7 @@ namespace Nano\Bundle\GeneratorBundle\Tests\Command;
 use Sensio\Bundle\GeneratorBundle\Tests\Command\GenerateBundleCommandTest as SensioGenerateBundleCommandTest;
 use Nano\Bundle\GeneratorBundle\Command\GenerateBundleCommand;
 
-class GenerateBundleCommandTest extends GenerateCommandTest
+class GenerateBundleCommandTest extends SensioGenerateBundleCommandTest
 {
     public function getInteractiveCommandData()
     {
