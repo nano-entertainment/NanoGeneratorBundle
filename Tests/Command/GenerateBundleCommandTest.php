@@ -7,12 +7,32 @@ use Nano\Bundle\GeneratorBundle\Command\GenerateBundleCommand;
 
 class GenerateBundleCommandTest extends SensioGenerateBundleCommandTest
 {
+  
+      /**
+      * @dataProvider getInteractiveCommandData
+      */
+    public function testInteractiveCommand($options, $input, $expected)
+    {
+        list($namespace, $bundle, $dir, $format, $structure) = $expected;
+
+        $generator = $this->getGenerator();
+        $generator
+            ->expects($this->once())
+            ->method('generate')
+            ->with($namespace, $bundle, $dir, $format, $structure)
+        ;
+
+        $tester = new CommandTester($this->getCommand($generator, $input));
+        $tester->execute($options);
+    }
+
+
     public function getInteractiveCommandData()
     {
         $tmp = sys_get_temp_dir();
 
         return array(
-            array(array('--dir' => $tmp), "Foo/BarABundle\n", array('Foo\BarBundle', 'FooBarBundle', $tmp.'/', 'annotation', false)),
+            array(array('--dir' => $tmp), "Foo/BarABundle\n", array('Foo\BarABundle', 'FooBarABundle', $tmp.'/', 'annotation', false)),
             array(array('--dir' => $tmp), "Foo/BarBBundle\nBarBBundle\nfoo\nyml\nn", array('Foo\BarBBundle', 'BarBBundle', 'foo/', 'yml', false)),
             array(array('--dir' => $tmp, '--format' => 'yml', '--bundle-name' => 'BarCBundle', '--structure' => true), "Foo/BarCBundle\n", array('Foo\BarCBundle', 'BarCBundle', $tmp.'/', 'yml', true)),
         );
