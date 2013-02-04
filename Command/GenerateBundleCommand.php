@@ -21,6 +21,11 @@ class GenerateBundleCommand extends SensioGenerateBundleCommand
         $this->setDescription('Generate Bundle');
 
     }
+    
+    public function setGenerator(BundleGenerator $generator)
+    {
+        $this->generator = $generator;
+    }
 
     protected function getGenerator()
     {
