@@ -4,6 +4,7 @@ namespace Nano\Bundle\GeneratorBundle\Tests\Command;
 
 use Sensio\Bundle\GeneratorBundle\Tests\Command\GenerateBundleCommandTest as SensioGenerateBundleCommandTest;
 use Nano\Bundle\GeneratorBundle\Command\GenerateBundleCommand;
+use Symfony\Component\Console\Tester\CommandTester;
 
 class GenerateBundleCommandTest extends SensioGenerateBundleCommandTest
 {
