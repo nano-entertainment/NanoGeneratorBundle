@@ -22,10 +22,7 @@ class GenerateBundleCommand extends SensioGenerateBundleCommand
 
     }
     
-    public function setGenerator(BundleGenerator $generator)
-    {
-        $this->generator = $generator;
-    }
+    
 
     protected function getGenerator()
     {
@@ -36,4 +33,8 @@ class GenerateBundleCommand extends SensioGenerateBundleCommand
         return $this->generator;
     }
 
+    public function setGenerator(BundleGenerator $generator)
+    {
+        $this->generator = $generator;
+    }
 }
