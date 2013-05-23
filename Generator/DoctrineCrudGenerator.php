@@ -129,7 +129,7 @@ class DoctrineCrudGenerator extends SensioDoctrineCrudGenerator
      *
      * @param string $dir The path to the folder that hosts templates in the bundle
      */
-    private function generateIndexView($dir)
+    protected function generateIndexView($dir)
     {
         $this->renderFile($this->skeletonDir, 'views/index.html.twig', $dir.'/index.html.twig', array(
             'dir'               => $this->skeletonDir,
@@ -149,7 +149,7 @@ class DoctrineCrudGenerator extends SensioDoctrineCrudGenerator
      *
      * @param string $dir The path to the folder that hosts templates in the bundle
      */
-    private function generateShowView($dir)
+    protected function generateShowView($dir)
     {
         $this->renderFile($this->skeletonDir, 'views/show.html.twig', $dir.'/show.html.twig', array(
             'dir'               => $this->skeletonDir,
@@ -168,7 +168,7 @@ class DoctrineCrudGenerator extends SensioDoctrineCrudGenerator
      *
      * @param string $dir The path to the folder that hosts templates in the bundle
      */
-    private function generateNewView($dir)
+    protected function generateNewView($dir)
     {
         $this->renderFile($this->skeletonDir, 'views/new.html.twig', $dir.'/new.html.twig', array(
             'dir'               => $this->skeletonDir,
@@ -186,7 +186,7 @@ class DoctrineCrudGenerator extends SensioDoctrineCrudGenerator
      *
      * @param string $dir The path to the folder that hosts templates in the bundle
      */
-    private function generateEditView($dir)
+    protected function generateEditView($dir)
     {
         $this->renderFile($this->skeletonDir, 'views/edit.html.twig', $dir.'/edit.html.twig', array(
             'dir'               => $this->skeletonDir,
