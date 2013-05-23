@@ -11,7 +11,8 @@
     }
   ],
   "require":  {
-    "sensio/generator-bundle": "2.2.*"
+    "sensio/generator-bundle": "dev-master",
+    "twig/twig": "dev-master"
   },
   "autoload": {
     "psr-0": { "Nano\\Bundle\\GeneratorBundle": "" }
