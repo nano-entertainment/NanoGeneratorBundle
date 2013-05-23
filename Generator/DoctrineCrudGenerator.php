@@ -86,7 +86,7 @@ class DoctrineCrudGenerator extends SensioDoctrineCrudGenerator
      * Generates the controller class only.
      *
      */
-    private function generateControllerClass()
+    protected function generateControllerClass()
     {
         $dir = $this->bundle->getPath();
 
