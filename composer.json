@@ -11,14 +11,13 @@
     }
   ],
   "require":  {
-    "sensio/generator-bundle": "2.1.*",
-    "twig/twig": "1.*"
+    "sensio/generator-bundle": "2.2.*"
   },
   "autoload": {
     "psr-0": { "Nano\\Bundle\\GeneratorBundle": "" }
   },
   "target-dir": "Nano/Bundle/GeneratorBundle",
-  "minimum-stability": "dev",
+  "minimum-stability": "alpha",
   "extra": {
     "branch-alias": {
       "dev-master": "1.*-dev"
